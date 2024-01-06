@@ -2,11 +2,11 @@ import { Adapter } from './classes/Adapter';
 import { EngineManager } from './classes/EngineManager';
 import FontFaceObserver from 'fontfaceobserver';
 import { GlobalSettings } from './classes/GlobalSettings';
-import { GUIManager } from './classes/GUIManager';
+import { GUIManager } from './classes/GUI/GUIManager';
 import { SceneManager } from './classes/SceneManager';
 import { ControllerManager } from './classes/controller/ControllerManager';
 import {GUI_SCENE} from "./constants/sceneTypes";
-import {GUI_CHOOSE_CONTROLS} from "./constants/GUITypes";
+import {GUI_CHOOSE_CONTROLS} from "./constants/GUI/types";
 
 
 const attachSettings = async () => {

@@ -1,8 +1,8 @@
-import { GUI_CHOOSE_CONTROLS, GUI_CONNECT_CONTROLLER } from '../constants/GUITypes';
+import { GUI_CHOOSE_CONTROLS, GUI_CONNECT_CONTROLLER } from '../constants/GUI/types';
 import { GUI_SCENE } from '../constants/sceneTypes';
 import { EngineManager } from './EngineManager';
 import { ControllerManager } from "./controller/ControllerManager";
-import { GUIManager } from "./GUIManager";
+import { GUIManager } from "./GUI/GUIManager";
 import { GlobalSettings } from "./GlobalSettings";
 import { SceneManager } from "./SceneManager";
 
