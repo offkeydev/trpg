@@ -1,4 +1,5 @@
 import { GamepadManager } from "@babylonjs/core";
+import { Button } from "@babylonjs/inspector/components/Button";
 
 const UP = '12';
 const DOWN = '13';
@@ -26,11 +27,19 @@ const SCREEN = '17';
 
 export class Gamepad extends GamepadManager {
   _gamepad;
+
   _state;
+
   _isConnected: boolean = false;
 
-  constructor() {
+  onButtonPressAction: Function;
+
+  constructor(adapterButtonAction) {
     super();
+
+    this.onButtonPressAction = adapterButtonAction;
+
+    this.init();
   }
 
   async init(){
@@ -39,7 +48,7 @@ export class Gamepad extends GamepadManager {
 
   private async main(){
     this.onGamepadConnectedObservable.add((gamepad, state) => {
-      console.log('connect gamepad')
+
       this._gamepad = gamepad;
       this._state = state;
       this._isConnected = true;
@@ -67,14 +76,16 @@ export class Gamepad extends GamepadManager {
   }
 
   private async onDisconnect(){
-
+    
   }
 
   private onButtonPress(btnType: number, state: object){
-    console.log('Button pressed', btnType)
+      const value = btnType.toString();
+      
+      this.onButtonPressAction(value);
   }
 
   private onButtonRelease(btnType: number, state: object){
-    console.log('Button released', btnType)
+
   }
 }

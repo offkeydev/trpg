@@ -26,15 +26,16 @@ const GUI_CONTEXT_MENU = {
               {
                   name: 'button_use_keyboard',
                   text: 'KEYBOARD',
-                  offset: 80
+                  offset: 80,
+                  actionValue: GUI_USE_KEYBOARD,
               },
               {
                   name: 'button_use_controller',
                   text: 'CONTROLLER',
-                  offset: 118
+                  offset: 118,
+                  actionValue: GUI_CONNECT_CONTROLLER,
               }
           ],
-          buttonValues: [GUI_USE_KEYBOARD, GUI_CONNECT_CONTROLLER],
       }
   },
 
@@ -50,10 +51,10 @@ const GUI_CONTEXT_MENU = {
               {
                   name: 'button_done',
                   text: 'DONE',
-                  offset: 80
+                  offset: 80,
+                  actionValue: GUI_START_GAME_MENU,
               },
           ],
-          buttonValues: [GUI_START_GAME_MENU],
       }
   },
 
@@ -77,63 +78,87 @@ const GUI_CONTEXT_MENU = {
               {
                   name: 'button_new_game',
                   text: 'NEW GAME',
-                  offset: 80
+                  offset: 80,
+                  actionValue: GUI_START_GAME_SCENE,
               },
               {
                   name: 'button_new_game',
                   text: 'LOAD GAME',
                   offset: 118,
+                  actionValue: GUI_MENU_LOAD_GAME,
               },
               {
                   name: 'button_settings',
                   text: 'SETTINGS',
                   offset: 156,
+                  actionValue: GUI_MENU_SETTINGS,
               },
           ],
-          buttonValues: [GUI_START_GAME_SCENE, GUI_MENU_LOAD_GAME, GUI_MENU_SETTINGS],
       }
   },
 
   [GUI_START_GAME_SCENE]: {
       isControlsAvailable: false,
-
-      isSimpleText: false,
-      isAnimatedText: true,
-      isCharacterText: false,
-
-      guiAnimatedText: [
-      [{
-          name: 'text_1_0',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum',
-          offset: -80
+      guiText: {
+        // characterText: [{
+        //     name: 'char_text_0_1',
+        //     text: 'This is a characrer dialog text chat character talk',
+        //     offset: 0,
+        // }],
+        simpleText: [{
+            name: 'simple_text_0_1',
+            text: 'This is a simple text that im not shure where is need to use',
+            offset: 0,
+        }],
+        // simpleAnimatedText: [
+        //     {
+        //         name: 'animated_text_0_1',
+        //         text: 'This is an animated text that has show hide animation',
+        //         offset: 0,
+        //     },
+        //     {
+        //         name: 'animated_text_0_2',
+        //         text: 'This is an animated text that shown after firs hide',
+        //         offset: 0,
+        //     }
+        // ],
+        // animatedText: [
+        //     [
+        //         {
+        //             name: 'arr_anim_text_0_1',
+        //             text: 'This is an group text with animation',       
+        //             offset: -80,
+        //         },
+        //         {
+        //             name: 'arr_anim_text_0_2',
+        //             text: 'This is an group text with animation',
+        //             offset: 0,
+        //         },
+        //         {
+        //             name: 'arr_anim_text_0_3',
+        //             text: 'This is an group text with animation',
+        //             offset: 80,
+        //         }
+        //     ],
+        //     [
+        //         {
+        //             name: 'arr_anim_text_0_1',
+        //             text: 'This is an group text with animation',       
+        //             offset: -80,
+        //         },
+        //         {
+        //             name: 'arr_anim_text_0_2',
+        //             text: 'This is an group text with animation',
+        //             offset: 0,
+        //         },
+        //         {
+        //             name: 'arr_anim_text_0_3',
+        //             text: 'This is an group text with animation',
+        //             offset: 80,
+        //         }
+        //     ]
+        // ],
       },
-      {
-          name: 'text_1_1',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum',
-          offset: 0,
-      },
-      {
-          name: 'text_1_2',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum',
-          offset: 80,
-      }],
-      [{
-          name: 'text_2_0',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum',
-          offset: -80
-      },
-      {
-          name: 'text_2_1',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum',
-          offset: 0,
-      },
-      {
-          name: 'text_2_2',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum',
-          offset: 80,
-      }],
-      
-      ],
   }
 }
 

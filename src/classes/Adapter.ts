@@ -2,7 +2,7 @@ import { GUI_CHOOSE_CONTROLS, GUI_CONNECT_CONTROLLER } from '../constants/GUI/ty
 import { GUI_SCENE } from '../constants/sceneTypes';
 import { EngineManager } from './EngineManager';
 import { ControllerManager } from "./controller/ControllerManager";
-import { GUIManager } from "./GUI/GUIManager";
+import { GUIManager } from "./GUI/gui/GUIManager";
 import { GlobalSettings } from "./GlobalSettings";
 import { SceneManager } from "./SceneManager";
 
@@ -42,6 +42,38 @@ export class Adapter {
     }
 
     async init() {
+        await this.initializeInstances();
+
+        await this.registerObservers();
+    }
+
+    private async registerObservers(){
+        const {
+            SceneManager,
+        } = this;
+
+        const {
+            _scene
+        } = SceneManager        
+
+        _scene.onBeforeRenderObservable.addOnce(() => {
+            this.onBeforeSceneRender()
+        });
+
+        _scene.onAfterRenderObservable.addOnce((ev) => {
+            this.onSceneRender(ev);
+        })
+    }
+
+    private async onBeforeSceneRender() {
+        console.log('Before render');
+    }
+
+    private async onSceneRender(ev) {
+        console.log('Scene render');
+    }
+
+    private async initializeInstances(){
         const {
             onSceneTypeChanged,
             onGuiTypeChanged,
@@ -71,6 +103,7 @@ export class Adapter {
         await this.mainLaunch();
     }
 
+
     onSceneTypeChanged = async (value?: string) => {
 
     }
@@ -80,6 +113,7 @@ export class Adapter {
     }
 
     onControllerAction = async (button: string) => {
+        console.log('Adapter onControllerAction', button)
         const { _sceneType } = this.SceneManager;
 
         await this.GUIManager.onControllerButtonPressed(_sceneType, button);

@@ -2,7 +2,7 @@ import { Adapter } from './classes/Adapter';
 import { EngineManager } from './classes/EngineManager';
 import FontFaceObserver from 'fontfaceobserver';
 import { GlobalSettings } from './classes/GlobalSettings';
-import { GUIManager } from './classes/GUI/GUIManager';
+import { GUIManager } from './classes/GUI/gui/GUIManager';
 import { SceneManager } from './classes/SceneManager';
 import { ControllerManager } from './classes/controller/ControllerManager';
 import {GUI_SCENE} from "./constants/sceneTypes";

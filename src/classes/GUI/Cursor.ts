@@ -2,6 +2,8 @@ import { Scene } from "@babylonjs/core";
 import { Image, AdvancedDynamicTexture, Button, Control } from "@babylonjs/gui";
 import { Helper } from "../Helper";
 
+import { GUIData } from '../../constants/GUI/interfaces';
+
 const CURSOR_WIDTH = '18px';
 const CURSOR_HEIGHT = '14px';
 
@@ -25,8 +27,14 @@ export class Cursor {
     }
 
     // Trigger when GUIManager GUI changed
-    async onGuiChanged(advancedDynamicTexture: AdvancedDynamicTexture) {
+    async onGuiChanged(isControlsAvailable: boolean, advancedDynamicTexture: AdvancedDynamicTexture) {
         this._dynamicTexture = advancedDynamicTexture;
+
+        if (isControlsAvailable) {
+            this.show();
+        } else {
+            this.hide();
+        }
 
         await this.render();
     }
@@ -76,6 +84,13 @@ export class Cursor {
     private async getCursorPosition(index: number = 0) : Promise<{ top: string; left: string; }> {
         const menuElements = await Helper.getGuiMenuElements(this._dynamicTexture);
         const menuItem = menuElements[index];
+
+        if (!menuItem) {
+            return {
+                top: '0',
+                left: '0',
+            }
+        }
 
         return {
             top: `${menuItem.top}`,
